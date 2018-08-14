@@ -1,0 +1,405 @@
+body{
+    background-color: #fafafa !important;
+}
+.navbar{
+    background-color: white;
+}
+#id-buscar{    
+    margin-bottom: 0px !important;
+    margin-left: 130px;
+}
+.btn-menu{
+    background-color:white;
+    color: #11111166;
+    border-radius: 50%;    
+    border-width: 0px;        
+    margin-right: 10px;
+}
+#btn-menu{
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+#p-menu{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(17, 17, 17);
+    margin-left: 20px;
+    height: 30px;
+}
+#a-menu{
+    text-decoration:none;
+}
+#sect-menu{
+    background-color: #f5f5f5; 
+    width: 240px;
+    display: block;
+}
+#inp-buscar{
+    font-family: 'Roboto','Noto',sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 4px;
+    width: 560px;
+}
+/***************************************************************/
+#colorNav{
+    width: 180px;
+}
+#colorNav > ul{
+    width: 180px;
+    margin:0 auto;
+}
+#colorNav > ul > li{ /* will style only the top level li */
+    list-style: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.11) inset,1px 1px 1px white;
+    display: inline-block;
+    line-height: 1;
+    margin: 1px;
+    border-radius: 3px;
+    position:relative;
+}
+#colorNav > ul > li > a{
+    font-size:24px;
+    padding: 25px;
+}
+#colorNav > ul > li > ul > li > a{
+    color: black !important;
+}
+#colorNav li ul{
+    position:absolute;
+    list-style:none;
+    text-align:center;
+    width:300px;
+    left:50%;
+    margin-left:-120px !important;
+    top:25px;
+    font:bold 12px 'Open Sans Condensed', sans-serif;
+
+    max-height:0px;
+    overflow:hidden;
+
+    -webkit-transition:max-height 0.4s linear;
+    -moz-transition:max-height 0.4s linear;
+    transition:max-height 0.4s linear;
+}
+#colorNav li:hover ul{
+    max-height:300px;
+}
+#colorNav li ul li{
+    background-color:#ffffff;
+}
+
+#colorNav li ul li a{
+    padding:12px;
+    color:#fff !important;
+    text-decoration:none !important;
+    display:block;
+}
+
+#colorNav li ul li:nth-child(odd){ /* zebra stripes */
+    background-color:#ffffff;
+}
+
+#colorNav li ul li:hover{
+    background-color:#f5f5f5;
+}
+
+#colorNav li ul li:first-child{
+    border-radius:3px 3px 0 0;
+    margin-top:25px;
+    position:relative;
+}
+
+#colorNav li ul li:first-child:before{
+    content:'';
+    position:absolute;
+    width:1px;
+    height:1px;
+    border:5px solid transparent;
+    border-bottom-color:#313131;
+    left:50%;
+    top:-10px;
+    margin-left:-5px;
+}
+
+#colorNav li ul li:last-child{
+    border-bottom-left-radius:3px;
+    border-bottom-right-radius:3px;
+}
+#colorNav li.white{
+    background-color: white;
+    border-radius: 50%;
+    margin: 0px 10px 0px 10px;
+}
+#a-subMenu{
+    padding: 0px 0px 0px 0px !important;
+}
+#ul-subMenu{
+    width: 200px !important;            
+    margin-right: 10px;
+    padding-left: 0% !important;
+}
+/****************/
+
+/* main menu styles */
+#ul-subMenu ul {
+    left:-9999px;
+    position:absolute;
+    top:37px;
+    width:auto;
+}
+
+#ul-subMenu li {
+    float:left;
+    margin-right:5px;
+    position:relative;
+}
+
+/*focus styles*/
+#ul-subMenu li a:focus {
+    outline-width:0;
+}
+/*popups*/
+#ul-subMenu li a:active + ul.dd,#ul-subMenu li a:focus + ul.dd,#ul-subMenu li ul.dd:hover {
+    left:100;
+}
+#ul-subMenu ul.dd li a:active + ul,#ul-subMenu ul.dd li a:focus + ul,#ul-subMenu ul.dd li ul:hover {
+    left:300px;
+}
+#item-casa{
+    margin: 20px;
+}
+#item-casa > a > img{
+    border-radius: 50%;
+    margin-right: 20px;
+    float: left;
+}
+#item-configuraciones{
+    margin: 20px;
+}
+#item-configuraciones > a > img{
+    border-radius: 50%;
+    margin-right: 20px;
+    float: left;
+}
+#div-ayudas{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+#div-ayudas > a {
+    color: rgb(136, 136, 136);
+    font-size: 13px;
+    font-weight: 500;
+}
+#div-ayudas > p {
+    color: rgba(17, 17, 17, 0.6);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 2.1rem;
+}
+#div-itemsPrincipales{
+    margin-left: 20px;
+    padding-top: 20px;
+}
+#div-itemsPrincipales > div > a > img{
+    border-radius: 50%;
+    margin-right: 20px;
+    float: left;
+}
+#div-itemHistorial{
+    padding-top: 20px;
+    position: absolute;
+    left: 25%;
+}
+#div-seleccionHistorial{
+    float: right;
+    background-color: rgb(243, 243, 243);
+    padding-top: 10px;
+    width: 400px;
+    height: 620px;    
+}
+#div-loMejorDeYoutube{
+    float: right;
+    width: 81.3%;
+}
+#div-historialRespuesta{
+    display: none;
+}
+#div-seleccionHistorial > label{
+    padding: 0% 20% 0px 10%;
+}
+#div-seleccionHistorial > a{
+    color: rgba(17, 17, 17, 0.6);
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    padding-left: 10%;
+}
+#rbt-búsquedas{
+    margin-left: 8%;
+}
+#rbt-Comentarios{
+    margin-left: 26%;
+}
+#rbt-Comunidad{
+    margin-left: 28%;
+}
+#rbt-Livechat{
+    margin-left: 33%;
+}
+#banner{
+    background-color: #B91223;
+}
+#div-inicioRespuesta{
+    display: block;
+}
+#div-tendenciasRespuesta{
+    display: none;
+}
+#item-musica, #item-deportes, #item-juegos, #item-noticias, #item-enDirecto, #item-360, #item-Popupares, #div-explorarCanales, #subcripcionesNoticias, #subcripcionesDirecto, #subcripcionesRealidad, #div-historialDeInformes{
+    display: none;
+}
+#div-subirVideo{
+    display: none;
+}
+#div-informacion, #div-informacionDeportes, #div-informacionJuego, #div-informacionNoticia, #div-informacionEnDirecto, #div-informacion360, #div-informacionPopulare{
+    background-color: rgba(0, 0, 0, 0.027);
+    position: absolute;
+    width: 81.3%;
+    padding-top: 1%;
+    height: 20.9%;
+}
+#div-logoMusica, #div-logoDeportes, #div-logoJuegos, #div-logoNoticias, #div-logoDirecto, #div-logo360, #div-logoPopulares{
+    position: absolute;
+    left: 9%;
+}
+#div-informacionMusica, #div-informacionDeporte, #div-informacionJuegos, #div-informacionNoticias, #div-informacionDirecto, #div-informacionRealidadVirtual, #div-informacionPopulares{
+    position: absolute;
+    left: 18%;
+    top: 20%;
+}
+#div-Subcripbirse, #div-SubcripbirseDeportes, #div-SubcripbirseJuegos, #div-SubcripbirseNoticias, #div-SubcripbirseDirecto, #div-SubcripbirseRealidadVirtual, #div-SubcripbirsePopulares{
+    position: absolute;
+    left: 60%;
+    top: 20%;
+}
+#div-tabsMusica{
+    position: absolute;
+    top: 54.4%;
+}
+#div-tabsMusica > ul{
+    background-color: rgba(0, 0, 0, 0.027);
+}
+#div-tabsMusica > ul > li > a{
+    padding-left: 52.3px;
+    padding-right: 53.4px;
+}
+@media screen and (max-width: 1200px) {
+    #inp-buscar{
+        width: 400px;
+    }
+    #id-buscar{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+@media screen and (max-width: 992px) {
+    #inp-buscar{
+        width: 150px;
+    }
+}
+@media screen and (max-width: 768px) {
+    #inp-buscar{
+        display: none;
+    }
+    #colorNav > ul{
+        display: none;
+    }
+    #sect-menu{
+        display: none;
+    }
+}
+@media screen and (max-width: 576px) {
+    #id-buscar{
+        display: none;
+    }
+    #div-iniciarSesion{
+        position: absolute;
+        left: 50%;        
+    }
+}
+#h7{
+    color: rgba(0, 0, 0, 0.377);
+    font-size: 0.8rem;
+}
+#loMejorDeYoutube{
+    position: absolute;
+    left: 25%;
+    margin-top: 30px;
+}
+#div-historialDeInformes{
+    position: absolute;
+    left: 25%;
+    margin-top: 30px;
+}
+#div-historialDeInformes > div > img{
+    position: absolute;
+    left: 100%;
+    top: 10%;
+}
+#div-historialDeInformes > div > div{
+    position: absolute;
+    left: 35%;
+    top: 120%;
+}
+#subcripciones{
+    position: absolute;
+    left: 15%;
+    width: 900px;
+    height: 100px;
+}
+#subcripciones > div{
+    float: left;
+    margin: 0 30px 0 30px;
+}
+#subcripciones > div > img {
+    border-radius: 50%;
+}
+#btnSiguiente {
+    background-color: #f1f1f1;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 35px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#btnSiguiente:hover {
+    background-color: #f1f1f196;
+}
+#item-casa:hover, #div-inicio:hover, #div-tendencias:hover, #div-hitorial:hover, #item-configuraciones:hover {
+    background-color: #d4d3d3;
+}
+#div-subirVideo{
+    background-color: white;
+}
+#div-subirVideo{
+    width: 75%;
+    height: 80%;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+}
+
+
+.tamanio-img {
+  width: 13%;
+  height: 13%;
+  border-radius: 50%;
+}
