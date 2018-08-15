@@ -115,7 +115,7 @@ $(document).ready(function(){
     });
     //ingresoCorreo();
 });
-/*----------------------------------Funciones Login-------------------------------
+//----------------------------------Funciones Login-------------------------------
 function estadoValidar(color,id){
     $("#"+id).focus(function(){
         $(".barra-input").css("background-color", color);
@@ -301,4 +301,4 @@ function ingresoContrasena(){
             });
         }  
     });  
-  }*/
+  }
