@@ -1,9 +1,9 @@
 <?php 
-	$archivo = fopen("../data/videos.json", "r");
+	$archivo = fopen("../data/videos/urlVideos.json", "r");
 	$linea = "";
 	$videos = array();
 	while ($linea = fgets($archivo)) {
-		$video = json_decode($linea, true);
+		$video = $linea;
 		$videos[] = $video;
 	}
 	fclose($archivo);
