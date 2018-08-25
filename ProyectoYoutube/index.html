@@ -481,14 +481,7 @@
             </div>
         </div>
         <hr>
-        <div id="div-sesionUsuario">
-            <p id="p-menu"> Inicia sesión para ver tus<br> canales y<br> recomendaciones. </p>
-            <div>
-                <a href="pages/login.html" style="text-decoration:none; margin-left: 30px;"><br>
-                    <b style="margin-left: 45px">INICIAR SESION</b>    
-                </a>
-            </div>
-        </div>
+        <div id="div-sesionUsuario"></div>
         <hr>
         <div id="div-itemsMasDeYoutube">
             <p id="p-menu"><strong>MÁS DE YOUTUBE</strong></p>
@@ -546,7 +539,10 @@
     </section>
 
     <div id="div-subirVideo">
-        
+        <form action="ajax/administradorBase.php?accion=subirArchivo" method="POST" enctype="multipart/form-data">
+            <input type="file" name="archivo"><br><br><br>
+            <button>Subir Archivo</button>
+        </form>
     </div>
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/jquery.min.js"></script>

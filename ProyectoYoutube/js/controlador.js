@@ -7,7 +7,11 @@ var correcto=false;
     selectorActual = "";
 });*/
 $(document).ready(function(){ 
+<<<<<<< HEAD
     cargarVideos();
+=======
+    
+>>>>>>> b55fead5e7aebb192cc36f2bd987f6dc06a5b7d6
     $(".btn-menu").click(function(){
         $("#sect-menu").toggle("slow");
         
@@ -125,6 +129,7 @@ $(document).ready(function(){
         selectorActual = "#div-subirVideo";
     });
     ingresoCorreo();
+    logueado(false);
 });
 //----------------------------------Funciones Login-------------------------------
 function estadoValidar(color,id){
@@ -340,6 +345,7 @@ function ingresoContrasena(){
                         if ( $("#txt-pass").val() == respuesta[i].contrasenia ) {
                             alert("Se a Logueado Correctamente");
                             location.href ="../index.html";
+                            logueado(true);                            
                         }else{
                             $("#txt-pass").val("");
                             $("#validoOInvalidoContrasenia").html("Contraseña Incorrecta");
@@ -542,6 +548,7 @@ function recuperarCorreo(){
     $("#div-pasosLogin").html(contenido);
     estadoValidar("#4285f4", "txt-correo");
 }
+<<<<<<< HEAD
 //<<<<<<< HEAD
 function verificarCorreo(){
     var contenido = "";
@@ -620,3 +627,30 @@ function cargarVideos(){
     });
 }
 
+=======
+function logueado(logeado){
+    if(logeado==false){
+        $("#div-sesionUsuario").html(
+            `<p id="p-menu"> Inicia sesión para ver tus<br> canales y<br> recomendaciones. </p>
+                <div id="logueadoONO">
+                    <a href="pages/login.html" style="text-decoration:none; margin-left: 30px;"><br>
+                        <b style="margin-left: 45px">INICIAR SESION</b>    
+                    </a>
+                </div>`
+            );
+    }else{
+        $("#div-sesionUsuario").html("Hola");
+    }
+}
+//----------------------------------------------------------------------------------
+/*$("#subirVideo").click(function(){
+    var parametro = "nombreCarpeta=" + correoValido;
+    console.log(parametro);
+    $.ajax({
+        url: '../ajax/administradorBase.php?accion=subirArchivo',
+        data: parametro,
+        method: 'POST',
+        dataType: 'json'
+    });
+});*/
+>>>>>>> b55fead5e7aebb192cc36f2bd987f6dc06a5b7d6
