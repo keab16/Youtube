@@ -399,3 +399,7 @@ body{
   height: 13%;
   border-radius: 50%;
 }
+#tomarArchivo{
+    background-color: red;
+    background-image: url("../img/subirArchivo.jpg")
+}

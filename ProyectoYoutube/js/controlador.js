@@ -7,21 +7,10 @@ var correcto=false;
     selectorActual = "";
 });*/
 $(document).ready(function(){ 
-
-    cargarVideos();
-
+    
     $(".btn-menu").click(function(){
         $("#sect-menu").toggle("slow");
-        
-        if ($("#main-videos").hasClass("col-lg-9")) {
-            $("#main-videos").removeClass("col-lg-9");
-            $("#main-videos").addClass("col-lg-12");
-        } else {
-            $("#main-videos").addClass("col-lg-9");
-            $("#main-videos").removeClass("col-lg-12");
-        }
     });
-    
     $("#div-inicio").click(function(){
         $(selectorActual).toggle("slow");
         $("#div-inicioRespuesta").toggle("slow");
@@ -546,85 +535,6 @@ function recuperarCorreo(){
     $("#div-pasosLogin").html(contenido);
     estadoValidar("#4285f4", "txt-correo");
 }
-
-function verificarCorreo(){
-    var contenido = "";
-    
-    contenido += 
-        `<div class="banner">
-            <h1>Verifica tu dirección de correo electrónico</h1>
-        </div>
-        <div class="div-c3">
-            <div class="div-formulario">
-                <form method="POST">
-                    <div class="div-f">
-                        <div class="div-f1">
-                            <div class="div-f2">
-                                <input type="email" name="txt-correo" id="txt-correo" value="" autocomplete="username" spellcheck="false" tabindex="0" class="form-control div-f3 ">
-                                <div id="texto-input" class="textoInput" aria-hidden="true">
-                                    Correo electrónico o teléfono
-                                </div>
-                                <div class="invalid-feedback" style="position: absolute;">Ingresa un correo electrónico o un número de teléfono</div>
-                            </div>
-                            <div class="barra-input" id="barra-input"></div>
-                        </div>
-                    </div>
-                    <div class="password">
-                        <content>
-                            <a id="link-recuperacionC" href="#div-recuperarCorreo" onclick="recuperarCorreo();" style="margin: 0; ">¿Olvidaste el
-                                correo electrónico?</a>
-                        </content>
-                    </div>
-                </form>
-                <div style="color: #757575; font-size: 12px; line-height: 1.3333; margin-top: 32px">
-                    <div style="padding-bottom: 3px; padding-top: 9px;">
-                        ¿Esta no es tu computadora? Usa el modo de invitado para navegar de forma privada.
-                        <a href="https://support.google.com/chrome/answer/6130773?hl=es-419">
-                            <content>
-                                <span>Más información</span>
-                            </content>
-                        </a>
-                    </div>
-                </div>
-                <div class="div-c4">
-                    <div style="text-align: right;">
-                        <button id="btn-siguiente-1" class="btn btn-primary" type="button" onclick="validar2(\txt-correo\);">
-                            <content>
-                                <span>Siguiente</span>
-                            </content>
-                        </button>
-                    </div>
-                    <div>
-                        <div>
-                            <content><a href="" id="aIrACraerCuenta">Crear cuenta</a></content>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>`
-    $("#div-pasosLogin").html(contenido); 
-    estadoValidar("#4285f4", "txt-correo");
-}
-
-
-function cargarVideos(){
-    $.ajax({
-        url:"ajax/obtener-videos.php",
-        dataType:"json",
-        success:function(respuesta){
-            console.log(respuesta);
-            for (var i = 0; i < respuesta.length; i++) {
-                $("#div-videos").append(
-                `<div style="margin: 0px 5px 0px 5px">
-                    <video src="${respuesta[i].urlVideo}" width="230" height="200" controls></video>
-                    <p>${respuesta[i].nombre}</p>
-                 </div>`);
-            }
-        }
-    });
-}
-
-
 function logueado(logeado){
     if(logeado==false){
         $("#div-sesionUsuario").html(
@@ -650,4 +560,3 @@ function logueado(logeado){
         dataType: 'json'
     });
 });*/
-

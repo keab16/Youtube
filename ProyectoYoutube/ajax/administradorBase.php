@@ -25,23 +25,34 @@
 
             //if (isset($_POST)){
                 if( !file_exists('archivos') ){
-                    mkdir('../data/videos/Archivo', 0777, true);
-                    if( file_exists('../data/videos/Archivo') ){
-                        if ( move_uploaded_file($guardado, '../data/videos/Archivo/'.$nombre) ) {
-                            header("Location: ../index.html");
+                    mkdir('../data/Videos', 0777, true);
+                    $archivoBase=fopen('../data/Videos/urlVideos'.".json","w");
+                    fclose($archivoBase);
+
+                    if( file_exists('../data/Videos') ){
+                        if ( move_uploaded_file($guardado, '../data/Videos/'.$nombre) ) {
+                            $archivoBase=fopen('../data/Videos/urlVideos'.".json","a+");
+                            fwrite($archivoBase, '"../data/Videos/'.$nombre."\"\n");
+                            fclose($archivoBase);
+
                             echo "<script>alert('Archivo guardado con exito');</script>";                            
-                        }else{
                             header("Location: ../index.html");
-                            echo "<script>alert('Archivo no se pudo Guardar');</script>";                            
+                        }else{
+                            echo "<script>alert('Archivo no se pudo Guardar');</script>";    
+                            header("Location: ../index.html");                                                    
                         }
                     }
                 }else{
-                    if ( move_uploaded_file($guardado, '../data/videos/Archivo/'.$nombre) ) {
-                        header("Location: ../index.html");
-                        echo "<script>alert('Archivo guardado con exito');</script>";                        
+                    if ( move_uploaded_file($guardado, '../data/Videos/'.$nombre) ) {
+                        $archivoBase=fopen(' \"../data/Videos/urlVideos \"'.".json","a+");
+                        fwrite($archivoBase, '"../data/Videos/'.$nombre."\"\n");
+                        fclose($archivoBase);
+                            
+                        echo "<script>alert('Archivo guardado con exito');</script>";
+                        header("Location: ../index.html");                                                
                     }else{
-                        header("Location: ../index.html");
-                        echo "<script>alert('Archivo no se pudo Guardar');</script>";                        
+                        echo "<script>alert('Archivo no se pudo Guardar');</script>";
+                        header("Location: ../index.html");                                                
                     }
                 }
             //}
