@@ -542,7 +542,7 @@ function recuperarCorreo(){
     $("#div-pasosLogin").html(contenido);
     estadoValidar("#4285f4", "txt-correo");
 }
-<<<<<<< HEAD
+//<<<<<<< HEAD
 function verificarCorreo(){
     var contenido = "";
     
@@ -619,6 +619,4 @@ function cargarVideos(){
         }
     });
 }
-=======
-//----------------------------------------------------------------------------------
->>>>>>> 26d4692f4980fce0423ab18087901a773b7c83bc
+
