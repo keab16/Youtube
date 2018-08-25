@@ -34,80 +34,96 @@ $(document).ready(function(){
     });
     $("#div-hitorial").click(function(){
         $(selectorActual).hide();
+        $("#main-videos").hide();
         $("#div-historialRespuesta").toggle("slow");
         selectorActual = "#div-historialRespuesta";    
     });
     $(".div-musica").click(function(){
         $(selectorActual).hide();
+        $("#main-videos").hide();
         $("#item-musica").toggle("slow");
         selectorActual = "#item-musica";
     });
     $(".div-deportes").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-deportes").toggle("slow");
         selectorActual = "#item-deportes";
     });
     $(".div-juegos").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-juegos").toggle("slow");
         selectorActual = "#item-juegos";
     });
     $(".div-noticias").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-noticias").toggle("slow");
         selectorActual = "#item-noticias";
     });
     $(".div-enDirecto").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-enDirecto").toggle("slow");
         selectorActual = "#item-enDirecto";
     });
     $(".div-360").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-360").toggle("slow");
         selectorActual = "#item-360";
     });
     $("#irAsubcripcionesPopulares").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-Popupares").toggle("slow");
         selectorActual = "#item-Popupares";
     });
     $("#irAsubcripcionesMusica").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-musica").toggle("slow");
         selectorActual = "#item-musica";
     });
     $("#irASubcripcionesDeportes").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-deportes").toggle("slow");
         selectorActual = "#item-deportes";
     });
     $("#irASubcripcionesJuegos").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-juegos").toggle("slow");
         selectorActual = "#item-juegos";
     });
     $("#irASubcripcionesNoticias").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-noticias").toggle("slow");
         selectorActual = "#item-noticias";
     });
     $("#irASubcripcionesDirecto").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-enDirecto").toggle("slow");
         selectorActual = "#item-enDirecto";
     });
     $("#irAsubcripcionesRealidad").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#item-360").toggle("slow");
         selectorActual = "#item-360";
     });
     $("#div-explorar").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#div-explorarCanales").toggle("slow");
         selectorActual = "#div-explorarCanales";
     });
     $("#btnSiguiente").click(function(){
+        $("#main-videos").hide();
         $("#subcripcionesPopulares").toggle("slow");
         $("#subcripcionesmusica").toggle("slow");
         $("#subcripcionesDeportes").toggle("slow");
@@ -116,6 +132,7 @@ $(document).ready(function(){
         $("#subcripcionesRealidad").toggle("slow");
     });
     $(".item-configuracionesHistorial").click(function(){
+        $("#main-videos").hide();
         $(selectorActual).toggle("slow");
         $("#div-historialDeInformes").toggle("slow");
         selectorActual = "#div-historialDeInformes";
@@ -579,10 +596,10 @@ function cargarVideos(){
         success:function(respuesta){
             console.log(respuesta);
             for (var i = 0; i < respuesta.length; i++) {
-                console.log(respuesta[i]);
+                //console.log(respuesta[i]);
                 $("#div-videos").append(
-                `<div style="margin: 0px 5px 0px 5px">
-                    <video src="${respuesta[i]}" width="230" height="200" controls></video>
+                `<div style="margin: 0px 5px 0px 5px;" width= "230" height="200">
+                    <video src=${respuesta[i]} width="230" height="220" controls></video>
                     <p>video ${i+1}</p>
                  </div>`);
             }
