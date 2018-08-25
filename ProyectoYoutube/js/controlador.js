@@ -532,3 +532,4 @@ function recuperarCorreo(){
     $("#div-pasosLogin").html(contenido);
     estadoValidar("#4285f4", "txt-correo");
 }
+//----------------------------------------------------------------------------------
