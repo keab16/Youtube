@@ -1,5 +1,6 @@
 var selectorActual="#div-inicioRespuesta";
-
+var correoValido="";
+var correcto=false;
 /*$("").click(function(){
     $(selectorActual).toggle("slow");
     $("").toggle("slow");
@@ -137,21 +138,31 @@ function estadoValidar(color,id){
         }        
     });
 }
-var validarCampoVacio = function(id){  
+function validarCampoVacio(id){  
     if ((document.getElementById(id).value) == ""){
       document.getElementById(id).classList.remove('is-valid');
       document.getElementById(id).classList.add('is-invalid');
       var color= "#dc3545";
       estadoValidar(color,id);
+       correcto=false;
       return false;
     }else{
       document.getElementById(id).classList.remove('is-invalid');
       document.getElementById(id).classList.add('is-valid');
       var color= "#4285f4";
       estadoValidar(color,id);
+      correcto=true;
       return true;
     }
 };
+function idCampos(){
+    validarCampoVacio("txt-nombre");
+    validarCampoVacio("txt-apellido");
+    validarCampoVacio("txt-correo");
+    validarCampoVacio("txt-passwordNuevo");
+    validarCampoVacio("txt-passwordConfirmar");
+    //validarCampoVacio("");
+}
 function validarEmail(email, id) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (re.test(email)){
@@ -170,8 +181,8 @@ function ingresoCorreo() {
 
     contenido += 
         `<div class="banner"> 
-            <h1>Acceder</h1>
-            <p>Ir a Google Plays</p>
+            <h1>Iniciar Sesion</h1>
+            <p>Acceder a YouTube</p>
         </div>
         <div class="div-c3">
             <div class="div-formulario">
@@ -184,9 +195,10 @@ function ingresoCorreo() {
                                 <div id="texto-input" class="textoInput" aria-hidden="true">
                                     Correo electrónico o teléfono
                                 </div>
-                                <div class="invalid-feedback" style="position: absolute;" id="invalidOValido"></div>
+                                <div class="invalid-feedback" style="position: absolute;" id="invalidOValido"></div>                                
                             </div>
                             <div class="barra-input" id="barra-input"></div>
+                            <div id="correoInvalido" style="color:red; font-size:11px; margin-top:20px;"></div>
                         </div>
                     </div>
                     <div class="password">
@@ -221,106 +233,112 @@ function ingresoCorreo() {
     $("#div-pasosLogin").html(contenido);
     estadoValidar("#4285f4", "txt-correo");
     
-    /*$.ajax({
-        url: '../ajax/administradorBase.php?accion=obtenerUsuario',
-        contentType: 'json',
-        success: function (respuesta) {
-            console.log(respuesta);
-            $("#btnSiguienteCorreo").click(function () {
-                for (var i = 0; i < respuesta.length; i++) {
-                    if( validarCampoVacio("txt-correo") ){
-                        if( $("#txt-correo").text() == respuesta[i].correo ){
+    $("#btnSiguienteCorreo").click(function(){
+        correoValido = $("#txt-correo").val();
+        
+        $.ajax({
+            url: '../ajax/administradorBase.php?accion=leerUsuarios',
+            dataType: 'json',
+            success: function(respuesta){
+                console.log(respuesta);
+                if( validarCampoVacio("txt-correo") ){  
+                    console.log(respuesta);                  
+                    for (var i = 0; i < respuesta.length; i++) {
+                        console.log($("#txt-correo").val());
+                        console.log(respuesta[i].correo);
+                        if ( $("#txt-correo").val() == respuesta[i].correo ) {
                             ingresoContrasena();
                         }else{
-                            $("#invalidOValido").html("");
-                            $("#invalidOValido").html("Correo Invalido");
+                            console.log(respuesta);
+                            $("#correoInvalido").html("No existe el correo Electronico, crea una nueva vuenta si no tienes una.")
                         }
-                    }else{
-                        $("#invalidOValido").html("");
-                        $("#invalidOValido").html("Ingresa un correo electrónico o un número de teléfono Valido");
-                    }             
-                }
-                    
-            });            
-        }
-
-    }).done(function (data, textStatus, jqXHR) {
-        if (console && console.log) {
-            console.log("La solicitud se ha completado correctamente.");
-        }
-
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        if (console && console.log) {
-            console.log("La solicitud a fallado: " + textStatus);
-        }
-    });*/
+                    }
+                }else{
+                    $("#invalidOValido").html("");
+                    $("#invalidOValido").html("Ingresa un correo electrónico o un número de teléfono Valido");
+                }  
+            }
+        });
+    });
 }
 function ingresoContrasena(){
-    $.ajax({
-        //url:'ajax/sesion-y-cuenta.php?accion=etapa-contrasena',
-        success:function(respuesta){
-            var contenido="";
+    var contenido="";
 
-            contenido+= '<div class="banner">'+
-                        '<h1>Te damos la bienvenida</h1>'+
-                        '<div style="display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; min-height: 24px; padding-bottom: 3px; padding-top: 1px; margin-bottom: 0; margin-top: 0;">'+
-                        '<div>'+
-                        '<svg xmlns="https://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 48 48" fill="#4285f4" aria-hidden="true">'+
-                        '<path d="M24,0C10.74,0 0,10.74 0,24C0,37.26 10.74,48 24,48C37.26,48 48,37.26 48,24C48,10.74 37.26,0 24,0ZM24,41.28C17.988,41.28 12.708,38.208 9.6,33.552C9.66,28.788 19.212,26.16 24,26.16C28.788,26.16 38.328,28.788 38.4,33.552C35.292,38.208 30.012,41.28 24,41.28ZM24,7.2C27.972,7.2 31.2,10.428 31.2,14.4C31.2,18.384 27.972,21.6 24,21.6C20.028,21.6 16.8,18.384 16.8,14.4C16.8,10.428 20.028,7.2 24,7.2Z">'+
-                        '</path><path d="M0 0h48v48H0z" fill="none"></path></svg>'+
-                        '</div>'+
-                        '<div id="div-correoRecibido" style="height:20px; width:310px;">'+
-                        '</div>'+
-                        '<div role="button" id="div-cambiarCorreo" onclick="ingresoCorreo();">'+
-                        '<span style="top: -12px">'+
-                        '<svg aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="#000000">'+
-                        '<path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"></path>'+
-                        '<path d="M0-.75h24v24H0z" fill="none"></path></svg>'+
-                        '</span>'+
-                        '</div>'+
-                        '</div>'+
-                        '</div>'+
-                        '<div  class="div-c3">'+
-                        '<div class="div-formulario">'+
-                        '<form method="POST">'+
-                        '<div class="div-f">'+
-                        '<div class="div-f1">'+
-                        '<div class="div-f2">'+
-                        '<input type="password" name="txt-pass" id="txt-pass" value="" autocomplete="username" spellcheck="false" tabindex="0"  class="form-control div-f3 ">'+
-                        '<div id="texto-input" class="textoInput" aria-hidden="true" >'+
-                        'Ingresa tu contraseña'+
-                        '</div>  '+
-                        '<div class="invalid-feedback" style="position: absolute;">Ingresa una contraseña</div>'+
-                        '</div>'+
-                        '<div class="barra-input" id="barra-input"></div>'+
-                        '</div>'+
-                        '</div>'+
-                        '</form> '+                   
-                        '<div class="div-c4">'+
-                        '<div style="text-align: right;">'+
-                        '<button id="btn-siguiente-2" class="btn btn-primary" type="submit">'+
-                        '<content>'+
-                        '<span >Siguiente</span>'+
-                        '</content>'+
-                        '</button>'+
-                        '</div>'+
-                        '<div class="password">'+
-                        '<content>'+
-                        '<a id="link-recuperacionPass"  href="#div-central"  style="margin: 0; ">¿Olvidaste la contraseña?</a>'+  
-                        '</content> '+
-                        '</div>'+ 
-                        '</div>'+
-                        '</div>'+
-                        '</div>';
-                        
-            $("#div-pasosLogin").html(contenido);  
-            estadoValidar("#4285f4","txt-pass");  
-
-            $("#link-recuperacionPass").click(function(){
-                
+    contenido+= 
+        `<div class="banner">
+            <h1>Te damos la bienvenida</h1>
+            <div style="display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; min-height: 24px; padding-bottom: 3px; padding-top: 1px; margin-bottom: 0; margin-top: 0;">
+                <div>
+                    <svg xmlns="https://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 48 48" fill="#4285f4" aria-hidden="true">
+                        <path d="M24,0C10.74,0 0,10.74 0,24C0,37.26 10.74,48 24,48C37.26,48 48,37.26 48,24C48,10.74 37.26,0 24,0ZM24,41.28C17.988,41.28 12.708,38.208 9.6,33.552C9.66,28.788 19.212,26.16 24,26.16C28.788,26.16 38.328,28.788 38.4,33.552C35.292,38.208 30.012,41.28 24,41.28ZM24,7.2C27.972,7.2 31.2,10.428 31.2,14.4C31.2,18.384 27.972,21.6 24,21.6C20.028,21.6 16.8,18.384 16.8,14.4C16.8,10.428 20.028,7.2 24,7.2Z">
+                        </path>
+                        <path d="M0 0h48v48H0z" fill="none"></path></svg>
+                </div>
+                <div id="div-correoRecibido" style="height:20px; width:310px;">
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${correoValido}
+                </div>
+                <div role="button" id="div-cambiarCorreo" onclick="ingresoCorreo();">
+                    <span style="top: -12px">
+                        <svg aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="#000000">
+                            <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"></path>
+                            <path d="M0-.75h24v24H0z" fill="none"></path></svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="div-c3">
+            <div class="div-formulario">
+                <form method="POST">
+                    <div class="div-f">
+                        <div class="div-f1">
+                            <div class="div-f2">
+                                <input type="password" name="txt-pass" id="txt-pass" autocomplete="username" spellcheck="false" tabindex="0" class="form-control div-f3 ">
+                                <div id="texto-input" class="textoInput" aria-hidden="true">
+                                    Ingresa tu contraseña
+                                </div>
+                                <div class="invalid-feedback" style="position: absolute;">Ingresa una contraseña</div>
+                            </div>
+                            <div class="barra-input" id="barra-input"></div>
+                            <div id="validoOInvalidoContrasenia" style="color:red; font-size:11px; margin-top:20px;"></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="div-c4">
+                    <div style="text-align: right;">
+                        <button id="btnSiguienteContrasenia" class="btn btn-primary" type="submit">Siguiente</button>
+                    </div>
+                    <div class="password">
+                        <content>
+                            <a id="link-recuperacionPass" href="#div-central" style="margin: 0; ">¿Olvidaste la contraseña?</a>
+                        </content>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    
+    $("#div-pasosLogin").html(contenido);
+    estadoValidar("#4285f4", "txt-pass");
+    $("#btnSiguienteContrasenia").click(function(){
+        if ( validarCampoVacio("txt-pass") ) {
+            $("#validoOInvalidoContrasenia").html("");
+            $.ajax({
+                url: '../ajax/administradorBase.php?accion=leerUsuarios',
+                dataType: 'json',
+                success: function(respuesta){
+                    for (var i = 0; i < respuesta.length; i++) {
+                        console.log( $("#txt-pass").val());
+                        if ( $("#txt-pass").val() == respuesta[i].contrasenia ) {
+                            alert("Se a Logueado Correctamente");
+                            location.href ="../index.html";
+                        }else{
+                            $("#txt-pass").val("");
+                            $("#validoOInvalidoContrasenia").html("Contraseña Incorrecta");
+                        }
+                    }
+                }
             });
-        }  
-    });  
+        }
+    });
 }
 function cuentaNueva(){   
     var contenido="";
@@ -367,7 +385,7 @@ function cuentaNueva(){
                                 <div class="invalid-feedback" style="position: absolute;">Ingresa un correo valido</div>
                             </div>
                             <div class="barra-input" id="barra-input"></div>
-                            <div id="errorCorreo"></div>
+                            <div id="errorCorreo" style="color:red; font-size:11px; margin-top:20px;"></div>
                         </div>
                     </div>
                     Deberas confirmar que esta dirección de correo electrónica es valida.
@@ -406,11 +424,7 @@ function cuentaNueva(){
                 <img src="../img/account.svg" alt="imagenCuenta">
                 <div class="div-c4">
                     <div style="text-align: right;">
-                        <button id="btnSiguienteConfirmacion" class="btn btn-primary" type="button">
-                            <content>
-                                <span>Siguiente</span>
-                            </content>
-                        </button>
+                        <button id="btnSiguienteConfirmacion" class="btn btn-primary" type="button" onclick="idCampos();">Siguiente</button>
                     </div>
                     <div>
                         <div>
@@ -440,24 +454,24 @@ function cuentaNueva(){
 
         data.nombre = $("#txt-nombre").val();
         data.apellido = $("#txt-apellido").val();
-        //data.correo = $("#txt-correo").val();
         console.log(data);
         if( $("#txt-passwordNuevo").val() ==  $("#txt-passwordConfirmar").val() ){
             data.contrasenia = $("#txt-passwordConfirmar").val();
             console.log(data);
             $.ajax({
-                url: '../ajax/administradorBase.php?accion=obtenerUsuario',
+                url: '../ajax/administradorBase.php?accion=leerUsuarios',
                 dataType: 'json',
 		        success:function(respuesta){
                     for (var i = 0; i < respuesta.length; i++) {
                         console.log(data);
-                        if( $("#txt-correo").val() == respuesta[i].correo ){
+                        if( ($("#txt-correo").val() == respuesta[i].correo) ){
                             console.log(data);
                             $("#txt-correo").val("");
                             $("#errorCorreo").html("Ya Existe una cuenta con este correo");
                             $("#mensajeError").html("");
-                        }else{
+                        }else if( correcto==true ){
                             console.log(data);
+                            data.correo = $("#txt-correo").val();
                             $.ajax({
                                 url: '../ajax/administradorBase.php?accion=obtenerUsuario',
                                 method: 'POST',
@@ -487,8 +501,7 @@ function recuperarCorreo(){
     var contenido="";
 
     contenido+=
-        `
-        <div class="banner"> 
+        `<div class="banner"> 
             <h1>Buscar tu dirección de correo electrónico</h1>
             <p>Introduce tu número de teléfono o tu dirección de correo electrónico de recuperación</p>
         </div>
@@ -510,74 +523,12 @@ function recuperarCorreo(){
                 </form>
                 <div class="div-c4">
                     <div style="text-align: right;">
-                        <button id="btnSiguienteRecuperar" class="btn btn-primary" type="button" onclick="validar2(\txt-correo\);">
-                            <content>
-                                <span>Siguiente</span>
-                            </content>
-                        </button>
+                        <button id="btnSiguienteRecuperar" class="btn btn-primary" type="button">Siguiente</button>
                     </div>	
                 </div>
             </div>
         </div>
         `
     $("#div-pasosLogin").html(contenido);
-    estadoValidar("#4285f4", "txt-correo");
-}
-function verificarCorreo(){
-    var contenido = "";
-    
-    contenido += 
-        `<div class="banner">
-            <h1>Verifica tu dirección de correo electrónico</h1>
-        </div>
-        <div class="div-c3">
-            <div class="div-formulario">
-                <form method="POST">
-                    <div class="div-f">
-                        <div class="div-f1">
-                            <div class="div-f2">
-                                <input type="email" name="txt-correo" id="txt-correo" value="" autocomplete="username" spellcheck="false" tabindex="0" class="form-control div-f3 ">
-                                <div id="texto-input" class="textoInput" aria-hidden="true">
-                                    Correo electrónico o teléfono
-                                </div>
-                                <div class="invalid-feedback" style="position: absolute;">Ingresa un correo electrónico o un número de teléfono</div>
-                            </div>
-                            <div class="barra-input" id="barra-input"></div>
-                        </div>
-                    </div>
-                    <div class="password">
-                        <content>
-                            <a id="link-recuperacionC" href="#div-recuperarCorreo" onclick="recuperarCorreo();" style="margin: 0; ">¿Olvidaste el
-                                correo electrónico?</a>
-                        </content>
-                    </div>
-                </form>
-                <div style="color: #757575; font-size: 12px; line-height: 1.3333; margin-top: 32px">
-                    <div style="padding-bottom: 3px; padding-top: 9px;">
-                        ¿Esta no es tu computadora? Usa el modo de invitado para navegar de forma privada.
-                        <a href="https://support.google.com/chrome/answer/6130773?hl=es-419">
-                            <content>
-                                <span>Más información</span>
-                            </content>
-                        </a>
-                    </div>
-                </div>
-                <div class="div-c4">
-                    <div style="text-align: right;">
-                        <button id="btn-siguiente-1" class="btn btn-primary" type="button" onclick="validar2(\txt-correo\);">
-                            <content>
-                                <span>Siguiente</span>
-                            </content>
-                        </button>
-                    </div>
-                    <div>
-                        <div>
-                            <content><a href="" id="aIrACraerCuenta">Crear cuenta</a></content>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>`
-    $("#div-pasosLogin").html(contenido); 
     estadoValidar("#4285f4", "txt-correo");
 }
