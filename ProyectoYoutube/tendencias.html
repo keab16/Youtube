@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html style="width: 100%;">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>YouTube</title>
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="img/icon.png">
+    <script type="text/javascript" src="js/fontawesome-all.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <button class="btn-menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a href="index.html" id="aLogo">
+            <img src="img/logo.png" id="logo" width="60">
+        </a>
+        <form class="form-inline" style="size: 35px;">
+            <div class="input-group" id="id-buscar">
+                <input class="form-control" type="search" placeholder="Buscar" aria-label="Search" id="inp-buscar">
+                <button class="btn my-2 my-sm-0" type="submit" style="background-color: #f8f8f8">
+                    <i class="fas fa-search" style="color: #11111166"></i>
+                </button>    
+            </div>
+        </form>
+        <nav id="colorNav">
+            <ul id="ul-subMenu">
+                <li class="white">
+                    <a href="#" class="icon-home" id="a-subMenu"></a>
+                    <img src="img/camara.JPG">
+                    <ul>
+                        <li>
+                            <a href="#"  id="subirVideo">
+                                <img src="img/video.JPG" style="margin-right: 40px;">
+                                <span>Subir Vídeo</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="navDirecto">
+                                <img src="img/directo.JPG" style="margin-right: 10px;">
+                                <span>Emitir en Directo</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="white" id="nav">
+                    <a href="#" class="icon-home" id="a-subMenu"></a>
+                    <i class="fas fa-th" style="color: #11111166"></i>
+                    <ul style="margin-left: -130px !important;">
+                        <li>
+                            <a href="#">
+                                <img src="img/tv.JPG" style="margin-right: 60px;">
+                                <span>YouTube TV</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/gamming.JPG" style="margin-right: 30px;">
+                                <span>YouTube Gaming</span>
+                            </a>
+                        </li>                    
+                        <li>
+                            <a href="#">
+                                <img src="img/music.JPG" style="margin-right: 50px;">
+                                <span>YouTube Music</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/kids.JPG" style="margin-right: 60px;">
+                                <span>YouTube Kids</span>
+                            </a>                            
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/icon.jpg">
+                                <span>Academia de Creadores</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/icon.jpg">
+                                <span>YouTube para Artistas</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="white">
+                    <a href="#" class="icon-home" id="a-subMenu"></a>
+                    <i class="fab fa-facebook-messenger fa-lg" style="color: #11111166"></i>
+                    <ul style="margin-left: -80px !important;">
+                        <li>
+                            <a href="#">Mensajes</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="white">
+                    <a href="#" class="fly" id="a-subMenu" tabindex="1"></a>
+                    <i class="fas fa-ellipsis-v" style="color: #11111166"></i>
+                    <ul class="dd">
+                        <li>
+                            <a class="fly" href="#" tabindex="1">Tema Oscuro:desactivado</a>
+                            <ul>
+                                <li>
+                                    <a href="#">Oscuro</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>            
+        </nav>
+        <div id="div-iniciarSesion">
+            <a href="pages/login.html" id="a-menu">
+                <b>INICIAR SESION</b>    
+            </a>
+        </div>
+    </nav>
+
+    <div id="div-seleccionMenuRespuestas">
+        <div id="div-inicioRespuestas">
+            <div id="div-inicioRespuesta">
+                <div>
+                    <div id="banner">
+                        Inicio
+                    </div>
+                </div>
+            </div>
+            <div id="div-tendenciasRespuesta">
+                <div>
+                    <div id="banner">
+                        tendencias
+                    </div>
+                </div>
+            </div>
+            <div id="div-historialRespuesta">
+                <div id="div-itemHistorial">
+                    <p style="margin: 0px 0px 0px 0px;">Si no inicias sesión, no podrás ver el historial de reproducciones.</p>
+                    <a href="#">Mas Información.</a>
+                </div>
+                <div id="div-seleccionHistorial">
+                    <p style="padding: 20px 0px 0px 20px;">Tipo de historial</p><br><hr style="margin-top: 0px;">
+                    <label for="rbt-reproducciones">Historial de reproducciones</label><input type="radio" name="rbt-genero" id="rbt-reproducciones"><br><hr>
+                    <label for="rbt-búsquedas">Historial de búsquedas</label><input type="radio" name="rbt-genero" id="rbt-búsquedas"><br><hr>
+                    <label for="rbt-Comentarios">Comentarios</label><input type="radio" name="rbt-genero" id="rbt-Comentarios"><br><hr>
+                    <label for="rbt-Comunidad">Comunidad</label><input type="radio" name="rbt-genero" id="rbt-Comunidad"><br><hr>
+                    <label for="rbt-Livechat">Live chat</label><input type="radio" name="rbt-genero" id="rbt-Livechat"><br><hr>
+                    <a href="#">BORRAR EL HISTORIAL DE REPRODUCCIONES</a><br><br>
+                    <a href="#">PAUSAR EL HISTORIAL DE REPRODUCCIONES</a>
+                </div>
+            </div>
+        </div>
+        <div id="div-loMejorDeYoutube">
+            <div id="item-musica">
+                <div id="banner">
+                    <img src="img/bannerMusica.JPG" alt="bannerMusica">
+                </div>
+                <div id="div-informacion">
+                    <div id="div-logoMusica">
+                        <img src="img/logoMusica.JPG" alt="Logo Musica" style="border-radius: 50%">
+                    </div>
+                    <div id="div-informacionMusica">
+                        <div>
+                            <h4>Música</h4>
+                        </div>
+                        <div>
+                            Numero de Supcriciones
+                        </div>
+                    </div>
+                    <div id="div-Subcripbirse">
+                        <button class="btn btn-danger">SUBCRIBIRSE</button>
+                    </div>
+                </div>
+                <div id="div-tabsMusica">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">INICIO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">VÍDEOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">LISTAS DE REPRODUCCIÓN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile1-tab" data-toggle="tab" href="#profile1" role="tab" aria-controls="profile1" aria-selected="false">CANALES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact1-tab" data-toggle="tab" href="#contact1" role="tab" aria-controls="contact1" aria-selected="false">MÁS INFORMACIÓN</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Musica</div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Musicaa</div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">aaa</div>
+                        <div class="tab-pane fade" id="profile1" role="tabpanel" aria-labelledby="profile1-tab">Musicaaaaaaaaaaaaaaaaaaaaa</div>
+                        <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact1-tab">aaaeeeeeeeeeeee</div>
+                    </div>
+                </div>
+            </div>
+            <div id="item-deportes">
+                <div id="banner">
+                    <img src="img/bannerDeportes.JPG" alt="bannerDeportes">
+                </div>
+                <div id="div-informacionDeportes">
+                    <div id="div-logoDeportes">
+                        <img src="img/logoDeportes.JPG" alt="Logo Deportes" style="border-radius: 50%">
+                    </div>
+                    <div id="div-informacionDeporte">
+                        <div>
+                            <h4>Deportes</h4>
+                        </div>
+                        <div>
+                            Numero de Supcriciones
+                        </div>
+                    </div>
+                    <div id="div-SubcripbirseDeportes">
+                        <button class="btn btn-danger">SUBCRIBIRSE</button>
+                    </div>
+                </div>
+            </div>
+            <div id="item-juegos">
+                <div id="banner">
+                    <img src="img/bannerJuegos.JPG" alt="bannerJuegos">
+                </div>
+                <div id="div-informacionJuego">
+                    <div id="div-logoJuegos">
+                        <img src="img/logoJuegos.JPG" alt="Logo Juegos" style="border-radius: 50%">
+                    </div>
+                    <div id="div-informacionJuegos">
+                        <div>
+                            <h4>Juegos</h4>
+                        </div>
+                        <div>
+                            Numero de Supcriciones
+                        </div>
+                    </div>
+                    <div id="div-SubcripbirseJuegos">
+                        <button class="btn btn-danger">SUBCRIBIRSE</button>
+                    </div>
+                </div>
+            </div>
+            <div id="item-noticias">
+                <div id="banner">
+                    <img src="img/bannerNoticias.JPG" alt="bannerNoticias">
+                </div>
+                <div id="div-informacionNoticia">
+                    <div id="div-logoNoticias">
+                        <img src="img/logoNoticias.JPG" alt="Logo Noticias" style="border-radius: 50%">
+                    </div>
+                    <div id="div-informacionNoticias">
+                        <div>
+                            <h4>Noticias</h4>
+                        </div>
+                        <div>
+                            Numero de Supcriciones
+                        </div>
+                    </div>
+                    <div id="div-SubcripbirseNoticias">
+                        <button class="btn btn-danger">SUBCRIBIRSE</button>
+                    </div>
+                </div>
+            </div>
+            <div id="item-enDirecto">
+                <div id="banner">
+                    <img src="img/bannerEnDirecto.JPG" alt="bannerEnDirecto">
+                </div>
+                <div id="div-informacionEnDirecto">
+                    <div id="div-logoDirecto">
+                        <img src="img/logoEnDirecto.JPG" alt="Logo En Directo" style="border-radius: 50%">
+                    </div>
+                    <div id="div-informacionDirecto">
+                        <div>
+                            <h4>En Directo</h4>
+                        </div>
+                        <div>
+                            Numero de Supcriciones
+                        </div>
+                    </div>
+                    <div id="div-SubcripbirseDirecto">
+                        <button class="btn btn-danger">SUBCRIBIRSE</button>
+                    </div>
+                </div>
+            </div>
+            <div id="item-360">
+                <div id="banner">
+                    <img src="img/banner360.JPG" alt="banner360">
+                </div>
+                <div id="div-informacion360">
+                    <div id="div-logo360">
+                        <img src="img/logo360.JPG" alt="Logo 360" style="border-radius: 50%">
+                    </div>
+                    <div id="div-informacionRealidadVirtual">
+                        <div>
+                            <h4>Realidad Virtual</h4>
+                        </div>
+                        <div>
+                            Numero de Supcriciones
+                        </div>
+                    </div>
+                    <div id="div-SubcripbirseRealidadVirtual">
+                        <button class="btn btn-danger">SUBCRIBIRSE</button>
+                    </div>
+                </div>
+            </div>
+            <div id="item-Popupares">
+                    <div id="banner">
+                        <img src="img/bannerPopulares.JPG" alt="bannerPopulares">
+                    </div>
+                    <div id="div-informacionPopulare">
+                        <div id="div-logoPopulares">
+                            <img src="img/logoPopulares.JPG" alt="Logo Populares" style="border-radius: 50%">
+                        </div>
+                        <div id="div-informacionPopulares">
+                            <div>
+                                <h4>Populares en Youtube</h4>
+                            </div>
+                            <div>
+                                Numero de Supcriciones
+                            </div>
+                        </div>
+                        <div id="div-SubcripbirsePopulares">
+                            <button class="btn btn-danger">SUBCRIBIRSE</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div id="div-explorarCanales">
+            <div id="loMejorDeYoutube">
+                <h5>Lo Mejor de Youtube</h5>
+                <div id="subcripciones">
+                    <div id="subcripcionesPopulares">
+                        <div id="irAsubcripcionesPopulares">
+                            <img src="img/populares.JPG" alt="Populares">
+                            <h6>Populares en Youtube</h6>
+                            <h7 id="h7">Numero de Subcriptores</h7><br>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" value="subcripcionAPopulares">Subcribirse</button>
+                    </div>
+                    <div id="subcripcionesmusica">
+                        <div id="irAsubcripcionesMusica">
+                            <img src="img/subcripcionesMusica.JPG" alt="Musica">
+                            <h6>Música</h6>
+                            <h7 id="h7">Numero de Subcriptores</h7><br>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" value="subcripcionAMusica">Subcribirse</button>
+                    </div>
+                    <div id="subcripcionesDeportes">
+                        <div id="irASubcripcionesDeportes">
+                            <img src="img/subcripcionesDeportes.JPG" alt="Deportes">
+                            <h6>Deportes</h6>
+                            <h7 id="h7">Numero de Subcriptores</h7><br>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" value="subcripcionADeportes">Subcribirse</button>
+                    </div>
+                    <div id="subcripcionesJuegos">
+                        <div id="irASubcripcionesJuegos">
+                            <img src="img/subcripcionesJuegos.JPG" alt="Juegos">
+                            <h6>Juegos</h6>
+                            <h7 id="h7">Numero de Subcriptores</h7><br>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" value="subcripcionAJuegos">Subcribirse</button>
+                    </div>
+                    <button class="button" id="btnSiguiente"><b></b></button>
+                    <div id="subcripcionesNoticias">
+                        <div id="irASubcripcionesNoticias">
+                            <img src="img/subcripcionesNoticias.JPG" alt="Noticias">
+                            <h6>Noticias</h6>
+                            <h7 id="h7">Numero de Subcriptores</h7><br>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" value="subcripcionANoticias">Subcribirse</button>
+                    </div>
+                    <div id="subcripcionesDirecto">
+                        <div id="irASubcripcionesDirecto">
+                            <img src="img/subcripcionesDirecto.JPG" alt="Directo">
+                            <h6>En Directo</h6>
+                            <h7 id="h7">Numero de Subcriptores</h7><br>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" value="subcripcionADirecto">Subcribirse</button>
+                    </div>
+                    <div id="subcripcionesRealidad">
+                        <div id="irAsubcripcionesRealidad">
+                            <img src="img/subcripcionesRealidad.JPG" alt="Realidad">
+                            <h6>Realidad Virtual</h6>
+                            <h7 id="h7">Numero de Subcriptores</h7><br>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" value="subcripcionARealidad">Subcribirse</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="div-historialDeInformes">
+            <div>
+                <p><b>Gracias por Avisarnos</b></p>
+                Cualquier miembro de YouTube puede marcar contenido que crea que<br> infringe las normas de la comunidad, aunque este no se retirará<br> automáticamente, sino que se revisará según estas directrices:<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;El contenido que infringe las <a href="#">normas de la comunidad</a> se retira<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;de YouTube.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;El contenido que quizá no sea adecuado para el público más joven se<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;restringe en función de la edad.<br><br>
+                <a href="#">Más información sobre cómo denunciar contenido en YouTube</a>
+            </div>
+            <div>
+                <img src="img/historialInformes.png" alt="Historial de Informes" width="60%">
+            </div>
+            <div>
+                <div><a href="pages/login.html">Inicia sesión</a> para ver tu historial de informes.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <section id="sect-menu" class="col-xl-3 col-md-3 col-lg-3">
+                <div id="div-itemsPrincipales">
+                    <div id="div-inicio">
+                        <a href="inicio.html" id="a-menu">
+                            <img src="img/home.JPG">
+                            <p id="p-menu">Inicio</p>
+                        </a>
+                    </div>
+                    <div id="div-tendencias">
+                        <a href="tendencias.html" id="a-menu">
+                            <img src="img/tendencias.JPG">
+                            <p id="p-menu">Tendencias</p>
+                        </a>
+                    </div>
+                    <div id="div-hitorial">
+                        <a href="#" id="a-menu">
+                            <img src="img/historial.JPG">
+                            <p id="p-menu">Historial</p>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div id="div-itemsLoMejorDeYoutube">
+                    <p id="p-menu"><strong>LO MEJOR DE YOUTUBE</strong></p>
+                    <div class="div-musica" id="item-casa">
+                        <a href="#" id="a-menu">
+                            <img src="img/tabla/music.jpg" class="tamanio-img">
+                            <p id="p-menu">Música</p>
+                        </a>
+                    </div>
+                    <div class="div-deportes" id="item-casa">
+                        <a href="#" id="a-menu">
+                            <img src="img/tabla/deporte.jpg" class="tamanio-img">
+                            <p id="p-menu">Deportes</p>
+                        </a>
+                    </div>
+                    <div class="div-juegos" id="item-casa">
+                        <a href="#" id="a-menu">
+                            <img src="img/tabla/juegos.jpg" class="tamanio-img">
+                            <p id="p-menu">Juegos</p>
+                        </a>
+                    </div>
+                    <div class="div-noticias" id="item-casa">
+                        <a href="#" id="a-menu">
+                            <img src="img/tabla/noticia.jpg" class="tamanio-img">
+                            <p id="p-menu">Noticias</p>
+                        </a>
+                    </div>
+                    <div class="div-enDirecto" id="item-casa">
+                        <a href="#" id="a-menu">
+                            <img src="img/tabla/directo.jpg" class="tamanio-img">
+                            <p id="p-menu">En directo</p>
+                        </a>
+                    </div>
+                    <div class="div-360" id="item-casa">
+                        <a href="#" id="a-menu">
+                            <img src="img/tabla/video.jpg" class="tamanio-img">
+                            <p id="p-menu">Videos en 360°</p>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div id="div-explorar">
+                    <div id="item-casa">
+                        <a href="#" id="a-menu">
+                            <img src="img/explorar.png">
+                            <p id="p-menu"> Explorar canales </p>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div id="div-sesionUsuario">
+                    <p id="p-menu"> Inicia sesión para ver tus<br> canales y<br> recomendaciones. </p>
+                    <div>
+                        <a href="pages/login.html" style="text-decoration:none; margin-left: 30px;"><br>
+                            <b style="margin-left: 45px">INICIAR SESION</b>    
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div id="div-itemsMasDeYoutube">
+                    <p id="p-menu"><strong>MÁS DE YOUTUBE</strong></p>
+                    <div class="div-enDirecto" id="item-casa">
+                        <a href="#" id="a-menu">
+                            <img src="img/tabla/directo.png" class="tamanio-img">
+                            <p id="p-menu">Directo</p>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div id="div-configuraciones">
+                    <div id="item-configuraciones">
+                        <a href="#" id="a-menu">
+                            <img src="img/configuracion.JPG">
+                            <p id="p-menu">Configuraciones</p>
+                        </a>
+                    </div>
+                    <div class="item-configuracionesHistorial" id="item-configuraciones">
+                        <a href="#" id="a-menu">
+                            <img src="img/historial2.JPG">
+                            <p id="p-menu">Historial de Informes</p>
+                        </a>
+                    </div>
+                    <div id="item-configuraciones">
+                        <a href="#" id="a-menu">
+                            <img src="img/ayuda.JPG">
+                            <p id="p-menu">Ayuda</p>
+                        </a>
+                    </div>
+                    <div id="item-configuraciones">
+                        <a href="#" id="a-menu">
+                            <img src="img/notificaciones.JPG">
+                            <p id="p-menu">Enviar Sugerencias</p>
+                        </a>
+                    </div>           
+                </div>
+                <hr>
+                <div id="div-ayudas">
+                    <a href="#" id="a-menu">Información</a>            
+                    <a href="#" id="a-menu">Prensa</a>
+                    <a href="#" id="a-menu">Derechos de autor</a>
+                    <a href="#" id="a-menu">Creadores</a>
+                    <a href="#" id="a-menu">Publicidad</a>
+                    <a href="#" id="a-menu">Desarrolladores</a>
+                    <a href="#" id="a-menu">+YouTube</a>
+                    <br><br>          
+                    <a href="#" id="a-menu">Términos</a>
+                    <a href="#" id="a-menu">Privacidad</a>
+                    <a href="#" id="a-menu">Política y seguridad</a>
+                    <a href="#" id="a-menu">Probar las nuevas funciones</a>
+                    <br><br><br>
+                    <p>© 2018 YouTube, LLC</p>
+                </div>
+            </section>
+            <main class="col-xl-9 col-md-9 col-lg-9" id="main-videos">
+                <div class="row" id="div-videos">
+                   <!--div style="margin: 0px 5px 0px 5px">
+                        <video src="img/videos/video4.mp4" width=230 height=200 controls></video>
+                            <p>Hola mundo</p>
+                   </div-->
+
+                
+                </div>
+            </main>
+                
+        </div>
+    </div>
+
+    
+
+    <div id="div-subirVideo">
+        
+    </div><br>
+
+    <div>
+        
+    </div>
+
+    
+
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript"></script>
+    <script type="text/javascript" src="js/controlador.js"></script>    
+</body>
+</html>

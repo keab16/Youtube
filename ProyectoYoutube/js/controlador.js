@@ -6,9 +6,19 @@ var selectorActual="#div-inicioRespuesta";
     selectorActual = "";
 });*/
 $(document).ready(function(){ 
+    cargarVideos();
     $(".btn-menu").click(function(){
         $("#sect-menu").toggle("slow");
+        
+        if ($("#main-videos").hasClass("col-lg-9")) {
+            $("#main-videos").removeClass("col-lg-9");
+            $("#main-videos").addClass("col-lg-12");
+        } else {
+            $("#main-videos").addClass("col-lg-9");
+            $("#main-videos").removeClass("col-lg-12");
+        }
     });
+    
     $("#div-inicio").click(function(){
         $(selectorActual).toggle("slow");
         $("#div-inicioRespuesta").toggle("slow");
@@ -580,4 +590,22 @@ function verificarCorreo(){
         </div>`
     $("#div-pasosLogin").html(contenido); 
     estadoValidar("#4285f4", "txt-correo");
+}
+
+
+function cargarVideos(){
+    $.ajax({
+        url:"ajax/obtener-videos.php",
+        dataType:"json",
+        success:function(respuesta){
+            console.log(respuesta);
+            for (var i = 0; i < respuesta.length; i++) {
+                $("#div-videos").append(
+                `<div style="margin: 0px 5px 0px 5px">
+                    <video src="${respuesta[i].urlVideo}" width="230" height="200" controls></video>
+                    <p>${respuesta[i].nombre}</p>
+                 </div>`);
+            }
+        }
+    });
 }
