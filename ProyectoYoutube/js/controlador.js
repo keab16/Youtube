@@ -606,3 +606,14 @@ function cargarVideos(){
         }
     });
 }
+
+
+function mouseEnter(){
+    //console.log("mouse enter");
+    $("#main-videos").hide();
+}
+
+function mouseLeave(){
+    //console.log("mouse leave");
+    $("#main-videos").show();
+}
