@@ -113,7 +113,7 @@ $(document).ready(function(){
         $("#div-subirVideo").toggle("slow");
         selectorActual = "#div-subirVideo";
     });
-    //ingresoCorreo();
+    ingresoCorreo();
 });
 //----------------------------------Funciones Login-------------------------------
 function estadoValidar(color,id){
@@ -137,7 +137,7 @@ function estadoValidar(color,id){
         }        
     });
 }
-var validarCampoVacio2 = function(id){  
+var validarCampoVacio = function(id){  
     if ((document.getElementById(id).value) == ""){
       document.getElementById(id).classList.remove('is-valid');
       document.getElementById(id).classList.add('is-invalid');
@@ -152,76 +152,96 @@ var validarCampoVacio2 = function(id){
       return true;
     }
 };
+function validarEmail(email, id) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(email)){
+        //console.log("Correo valido " + email); 
+        document.getElementById(id).classList.remove("is-invalid");
+        document.getElementById(id).classList.add("is-valid");
+    }
+    else{
+        //console.log("Correo invalido " + email);
+        document.getElementById(id).classList.remove("is-valid");
+        document.getElementById(id).classList.add("is-invalid");
+    }
+}
 function ingresoCorreo() {
-    $.ajax({
-        url: '../ajax/sesion-y-cuenta.php?accion=etapa-correo',
-        contentType: "application/json; charset=utf-8",
+    var contenido = "";
+
+    contenido += 
+        `<div class="banner"> 
+            <h1>Acceder</h1>
+            <p>Ir a Google Plays</p>
+        </div>
+        <div class="div-c3">
+            <div class="div-formulario">
+                <form method="POST">
+                    <div class="div-f">
+                        <div class="div-f1">
+                            <div class="div-f2">
+                                <input onkeyup="validarEmail(this.value, this.id);" type="email" name="txt-correo" id="txt-correo" autocomplete="username"
+                                    spellcheck="false" tabindex="0" class="form-control div-f3 ">
+                                <div id="texto-input" class="textoInput" aria-hidden="true">
+                                    Correo electrónico o teléfono
+                                </div>
+                                <div class="invalid-feedback" style="position: absolute;" id="invalidOValido"></div>
+                            </div>
+                            <div class="barra-input" id="barra-input"></div>
+                        </div>
+                    </div>
+                    <div class="password">
+                        <content>
+                            <button class="btn btn-link" onclick="recuperarCorreo();" style="margin: 0; ">¿Olvidaste el correo electrónico?</button>
+                        </content>
+                    </div>
+                </form>
+                <div style="color: #757575; font-size: 12px; line-height: 1.3333; margin-top: 32px">
+                    <div style="padding-bottom: 3px; padding-top: 9px;">
+                        ¿Esta no es tu computadora? Usa el modo de invitado para navegar de forma privada.
+                        <a href="https://support.google.com/chrome/answer/6130773?hl=es-419">
+                            <content>
+                                <span>Más información</span>
+                            </content>
+                        </a>
+                    </div>
+                </div>
+                <div class="div-c4">
+                    <div style="text-align: right;">
+                        <button id="btnSiguienteCorreo" class="btn btn-primary" type="button">Siguiente</button>
+                    </div>
+                    <div>
+                        <div>
+                            <content><button class="btn btn-outline-info" onclick="cuentaNueva();">Crear cuenta</a></content>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    
+    $("#div-pasosLogin").html(contenido);
+    estadoValidar("#4285f4", "txt-correo");
+    
+    /*$.ajax({
+        url: '../ajax/administradorBase.php?accion=obtenerUsuario',
+        contentType: 'json',
         success: function (respuesta) {
             console.log(respuesta);
-            var contenido = "";
-
-            contenido += '<div class="banner">' +
-                '<h1>Acceder</h1>' +
-                '<p>Ir a Google Plays</p>' +
-                '</div>' +
-                '<div  class="div-c3">' +
-                '<div class="div-formulario">' +
-                '<form method="POST">' +
-                '<div class="div-f">' +
-                '<div class="div-f1">' +
-                '<div class="div-f2">' +
-                '<input type="email" name="txt-correo" id="txt-correo" value="" autocomplete="username" spellcheck="false" tabindex="0"  class="form-control div-f3 ">' +
-                '<div id="texto-input" class="textoInput" aria-hidden="true" >' +
-                'Correo electrónico o teléfono' +
-                '</div>  ' +
-                '<div class="invalid-feedback" style="position: absolute;">Ingresa un correo electrónico o un número de teléfono</div>' +
-                '</div>' +
-                '<div class="barra-input" id="barra-input"></div>' +
-                '</div>' +
-                '</div>' +
-                '<div class="password" >' +
-                '<content>' +
-                '<a id="link-recuperacionC"  href="#div-recuperarCorreo" onclick="recuperarCorreo();" style="margin: 0; ">¿Olvidaste el correo electrónico?</a>' +
-                '</content> ' +
-                '</div>' +
-                '</form> ' +
-                '<div style="color: #757575; font-size: 12px; line-height: 1.3333; margin-top: 32px">' +
-                '<div style="padding-bottom: 3px; padding-top: 9px;">' +
-                '¿Esta no es tu computadora? Usa el modo de invitado para navegar de forma privada.' +
-                '<a href="https://support.google.com/chrome/answer/6130773?hl=es-419">' +
-                '<content >' +
-                '<span >Más información</span>' +
-                '</content>' +
-                '</a>' +
-                '</div>  ' +
-                '</div>' +
-                '<div class="div-c4">' +
-                '<div style="text-align: right;">' +
-                '<button id="btn-siguiente-1" class="btn btn-primary" type="button"  onclick="validar2(\'txt-correo\');">' +
-                '<content>' +
-                '<span >Siguiente</span>' +
-                '</content>' +
-                '</button>' +
-                '</div>' +
-                '<div>' +
-                '<div>' +
-                '<content><a href="#">Crear cuenta</a></content>' +
-                '</div>' +
-                '</div>' +
-                '</div>' +
-                '</div>' +
-                '</div>';
-            $("#div-pasosLogin").html(contenido);
-            estadoValidar("#4285f4", "txt-correo");
-
-            $("#btn-siguiente-1").click(function () {
-                if (validarCampoVacio2("txt-correo")) {
-                    ingresoContrasena();
+            $("#btnSiguienteCorreo").click(function () {
+                for (var i = 0; i < respuesta.length; i++) {
+                    if( validarCampoVacio("txt-correo") ){
+                        if( $("#txt-correo").text() == respuesta[i].correo ){
+                            ingresoContrasena();
+                        }else{
+                            $("#invalidOValido").html("");
+                            $("#invalidOValido").html("Correo Invalido");
+                        }
+                    }else{
+                        $("#invalidOValido").html("");
+                        $("#invalidOValido").html("Ingresa un correo electrónico o un número de teléfono Valido");
+                    }             
                 }
-            });
-            $("#link-recuperacionC").click(function () {
-
-            });
+                    
+            });            
         }
 
     }).done(function (data, textStatus, jqXHR) {
@@ -233,11 +253,11 @@ function ingresoCorreo() {
         if (console && console.log) {
             console.log("La solicitud a fallado: " + textStatus);
         }
-    });
+    });*/
 }
 function ingresoContrasena(){
     $.ajax({
-        url:'ajax/sesion-y-cuenta.php?accion=etapa-contrasena',
+        //url:'ajax/sesion-y-cuenta.php?accion=etapa-contrasena',
         success:function(respuesta){
             var contenido="";
 
@@ -278,7 +298,7 @@ function ingresoContrasena(){
                         '</form> '+                   
                         '<div class="div-c4">'+
                         '<div style="text-align: right;">'+
-                        '<button id="btn-siguiente-2" class="btn btn-primary" type="submit"  onclick="validar2(\'txt-pass\');">'+
+                        '<button id="btn-siguiente-2" class="btn btn-primary" type="submit">'+
                         '<content>'+
                         '<span >Siguiente</span>'+
                         '</content>'+
@@ -301,4 +321,263 @@ function ingresoContrasena(){
             });
         }  
     });  
-  }
+}
+function cuentaNueva(){   
+    var contenido="";
+
+    contenido+= 
+        `<div class="banner">
+            <h1>Crear tu Cuenta de Google</h1>
+            <p>Acceder A YouTube</p>
+        </div>
+        <div class="div-c3">
+            <div class="div-formulario">
+                <form method="POST">
+                    <div class="div-f">
+                        <div class="div-f1">
+                            <div class="div-f2">
+                                <input name="txt-nombre" id="txt-nombre" autocomplete="username" spellcheck="false" tabindex="0" class="form-control div-f3 ">
+                                <div id="texto-input" class="textoInput" aria-hidden="true">
+                                    Nombres
+                                </div>
+                                <div class="invalid-feedback" style="position: absolute;">Ingresa su Nombre</div>
+                            </div>
+                            <div class="barra-input" id="barra-input"></div>
+                        </div>
+                    </div>
+                    <div class="div-f">
+                        <div class="div-f1">
+                            <div class="div-f2">
+                                <input name="txt-apellido" id="txt-apellido" autocomplete="username" spellcheck="false" tabindex="0" class="form-control div-f3 ">
+                                <div id="texto-input" class="textoInput" aria-hidden="true">
+                                    Apellido
+                                </div>
+                                <div class="invalid-feedback" style="position: absolute;">Ingresa su Apellido</div>
+                            </div>
+                            <div class="barra-input" id="barra-input"></div>
+                        </div>
+                    </div>
+                    <div class="div-f">
+                        <div class="div-f1">
+                            <div class="div-f2">
+                                <input onkeyup="validarEmail(this.value, this.id);" type="email" name="txt-correo" id="txt-correo" autocomplete="username" spellcheck="false" tabindex="0" class="form-control div-f3 ">
+                                <div id="texto-input" class="textoInput" aria-hidden="true">
+                                    Tu Dirección de correo electronico
+                                </div>
+                                <div class="invalid-feedback" style="position: absolute;">Ingresa un correo valido</div>
+                            </div>
+                            <div class="barra-input" id="barra-input"></div>
+                            <div id="errorCorreo"></div>
+                        </div>
+                    </div>
+                    Deberas confirmar que esta dirección de correo electrónica es valida.
+                    <div class="div-f">
+                        <div class="div-f2">
+                            <div class="div-f1">
+                                <input type="password" name="txt-passwordNuevo" id="txt-passwordNuevo" autocomplete="username" spellcheck="false" tabindex="0" class="form-control div-f3 " style="margin-top: 15px;">
+                                <div id="texto-input" class="textoInput" aria-hidden="true">
+                                    Contraseña
+                                </div>
+                                <div class="invalid-feedback" style="position: absolute;">Ingresa un contraseña valida</div>
+                            </div>
+                            <div class="barra-input" id="barra-input"></div>
+                            <div id="mensajeError"></div>
+                        </div>
+                    </div>
+                    <div class="div-f">
+                        <div class="div-f1">
+                            <div class="div-f2">
+                                <input type="password" name="txt-passwordConfirmar" id="txt-passwordConfirmar" autocomplete="username" spellcheck="false"
+                                    tabindex="0" class="form-control div-f3 ">
+                                <div id="texto-input" class="textoInput" aria-hidden="true">
+                                    Confirmar tu Contraseña
+                                </div>
+                                <div class="invalid-feedback" style="position: absolute;">Confirma Tu correo</div>
+                            </div>
+                            <div class="barra-input" id="barra-input"></div>
+                        </div>
+                    </div>
+                </form>
+                <div style="color: #757575; font-size: 12px; line-height: 1.3333; margin-top: 32px">
+                    <div style="padding-bottom: 3px; padding-top: 9px;">
+                        Utiliza ocho caracteres como mínimo con una combinación de letras, números y símbolos.
+                    </div>
+                </div>
+                <img src="../img/account.svg" alt="imagenCuenta">
+                <div class="div-c4">
+                    <div style="text-align: right;">
+                        <button id="btnSiguienteConfirmacion" class="btn btn-primary" type="button">
+                            <content>
+                                <span>Siguiente</span>
+                            </content>
+                        </button>
+                    </div>
+                    <div>
+                        <div>
+                            <content>
+                                <button class="btn btn-outline-info" id="btnRegresarLogin">Prefiero iniciar Sesión</button>
+                            </content>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`   
+
+
+    $("#div-pasosLogin").html(contenido); 
+    estadoValidar("#4285f4", "txt-nombre");
+    estadoValidar("#4285f4", "txt-apellido");
+    estadoValidar("#4285f4", "txt-correo");
+    estadoValidar("#4285f4", "txt-passwordNuevo");
+    estadoValidar("#4285f4", "txt-passwordConfirmar");
+
+    $("#btnRegresarLogin").click(function(){
+        ingresoCorreo();
+    });
+
+    $("#btnSiguienteConfirmacion").click(function(){
+        var data = {};
+
+        data.nombre = $("#txt-nombre").val();
+        data.apellido = $("#txt-apellido").val();
+        //data.correo = $("#txt-correo").val();
+        console.log(data);
+        if( $("#txt-passwordNuevo").val() ==  $("#txt-passwordConfirmar").val() ){
+            data.contrasenia = $("#txt-passwordConfirmar").val();
+            console.log(data);
+            $.ajax({
+                url: '../ajax/administradorBase.php?accion=obtenerUsuario',
+                dataType: 'json',
+		        success:function(respuesta){
+                    for (var i = 0; i < respuesta.length; i++) {
+                        console.log(data);
+                        if( $("#txt-correo").val() == respuesta[i].correo ){
+                            console.log(data);
+                            $("#txt-correo").val("");
+                            $("#errorCorreo").html("Ya Existe una cuenta con este correo");
+                            $("#mensajeError").html("");
+                        }else{
+                            console.log(data);
+                            $.ajax({
+                                url: '../ajax/administradorBase.php?accion=obtenerUsuario',
+                                method: 'POST',
+                                data: data,
+                                dataType: 'json',
+                                success: function(respuesta){
+                                    if ( respuesta.codigo == 0 )
+                                        alert(respuesta.mensaje);
+                                },
+                                error: function(error){
+                                    console.log(error);
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        }else{
+            $("#txt-passwordNuevo").val("");
+            $("#txt-passwordConfirmar").val("");
+            $("#mensajeError").html("Contraseña Incorrecta");
+            $("#errorCorreo").html("");
+        }        
+    });       
+}
+function recuperarCorreo(){
+    var contenido="";
+
+    contenido+=
+        `
+        <div class="banner"> 
+            <h1>Buscar tu dirección de correo electrónico</h1>
+            <p>Introduce tu número de teléfono o tu dirección de correo electrónico de recuperación</p>
+        </div>
+        <div class="div-c3">
+            <div class="div-formulario">
+                <form method="POST">
+                    <div class="div-f">
+                        <div class="div-f1">
+                            <div class="div-f2">
+                                <input type="email" name="txt-correo" id="txt-correo" value="" autocomplete="username" spellcheck="false" tabindex="0" class="form-control div-f3 ">
+                                <div id="texto-input" class="textoInput" aria-hidden="true">
+                                    Teléfono o dirección de correo
+                                </div>
+                                <div class="invalid-feedback" style="position: absolute;">Ingresa un correo electrónico o un número de teléfono</div>
+                            </div>
+                            <div class="barra-input" id="barra-input"></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="div-c4">
+                    <div style="text-align: right;">
+                        <button id="btnSiguienteRecuperar" class="btn btn-primary" type="button" onclick="validar2(\txt-correo\);">
+                            <content>
+                                <span>Siguiente</span>
+                            </content>
+                        </button>
+                    </div>	
+                </div>
+            </div>
+        </div>
+        `
+    $("#div-pasosLogin").html(contenido);
+    estadoValidar("#4285f4", "txt-correo");
+}
+function verificarCorreo(){
+    var contenido = "";
+    
+    contenido += 
+        `<div class="banner">
+            <h1>Verifica tu dirección de correo electrónico</h1>
+        </div>
+        <div class="div-c3">
+            <div class="div-formulario">
+                <form method="POST">
+                    <div class="div-f">
+                        <div class="div-f1">
+                            <div class="div-f2">
+                                <input type="email" name="txt-correo" id="txt-correo" value="" autocomplete="username" spellcheck="false" tabindex="0" class="form-control div-f3 ">
+                                <div id="texto-input" class="textoInput" aria-hidden="true">
+                                    Correo electrónico o teléfono
+                                </div>
+                                <div class="invalid-feedback" style="position: absolute;">Ingresa un correo electrónico o un número de teléfono</div>
+                            </div>
+                            <div class="barra-input" id="barra-input"></div>
+                        </div>
+                    </div>
+                    <div class="password">
+                        <content>
+                            <a id="link-recuperacionC" href="#div-recuperarCorreo" onclick="recuperarCorreo();" style="margin: 0; ">¿Olvidaste el
+                                correo electrónico?</a>
+                        </content>
+                    </div>
+                </form>
+                <div style="color: #757575; font-size: 12px; line-height: 1.3333; margin-top: 32px">
+                    <div style="padding-bottom: 3px; padding-top: 9px;">
+                        ¿Esta no es tu computadora? Usa el modo de invitado para navegar de forma privada.
+                        <a href="https://support.google.com/chrome/answer/6130773?hl=es-419">
+                            <content>
+                                <span>Más información</span>
+                            </content>
+                        </a>
+                    </div>
+                </div>
+                <div class="div-c4">
+                    <div style="text-align: right;">
+                        <button id="btn-siguiente-1" class="btn btn-primary" type="button" onclick="validar2(\txt-correo\);">
+                            <content>
+                                <span>Siguiente</span>
+                            </content>
+                        </button>
+                    </div>
+                    <div>
+                        <div>
+                            <content><a href="" id="aIrACraerCuenta">Crear cuenta</a></content>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    $("#div-pasosLogin").html(contenido); 
+    estadoValidar("#4285f4", "txt-correo");
+}
