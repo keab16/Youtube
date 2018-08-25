@@ -7,11 +7,9 @@ var correcto=false;
     selectorActual = "";
 });*/
 $(document).ready(function(){ 
-<<<<<<< HEAD
+
     cargarVideos();
-=======
-    
->>>>>>> b55fead5e7aebb192cc36f2bd987f6dc06a5b7d6
+
     $(".btn-menu").click(function(){
         $("#sect-menu").toggle("slow");
         
@@ -548,8 +546,7 @@ function recuperarCorreo(){
     $("#div-pasosLogin").html(contenido);
     estadoValidar("#4285f4", "txt-correo");
 }
-<<<<<<< HEAD
-//<<<<<<< HEAD
+
 function verificarCorreo(){
     var contenido = "";
     
@@ -627,7 +624,7 @@ function cargarVideos(){
     });
 }
 
-=======
+
 function logueado(logeado){
     if(logeado==false){
         $("#div-sesionUsuario").html(
@@ -653,4 +650,4 @@ function logueado(logeado){
         dataType: 'json'
     });
 });*/
->>>>>>> b55fead5e7aebb192cc36f2bd987f6dc06a5b7d6
+
