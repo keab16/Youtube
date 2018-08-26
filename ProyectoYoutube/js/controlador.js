@@ -138,6 +138,7 @@ $(document).ready(function(){
         selectorActual = "#div-historialDeInformes";
     });
     $("#subirVideo").click(function(){
+        $("#div-videos").hide();
         $(selectorActual).toggle("slow");
         $("#sect-menu").toggle("slow");
         $("#div-subirVideo").toggle("slow");
@@ -615,5 +616,6 @@ function mouseEnter(){
 
 function mouseLeave(){
     //console.log("mouse leave");
-    $("#main-videos").show();
+     $("#main-videos").show();
+    
 }
